@@ -21,4 +21,4 @@ jobs:
             This is a test release created by the CI workflow.
             Run ID: ${{ github.run_id }}
             Commit: ${{ github.sha }}
-          make_latest: false
+          make_latest: true
