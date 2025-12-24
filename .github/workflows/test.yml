@@ -1,0 +1,24 @@
+name: test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v5
+
+      - name: Test action with make_latest false
+        uses: Boshen/action-gh-release@master
+        with:
+          tag_name: test-${{ github.run_id }}
+          name: Test Release ${{ github.run_id }}
+          body: |
+            This is a test release created by the CI workflow.
+            Run ID: ${{ github.run_id }}
+            Commit: ${{ github.sha }}
+          make_latest: false
